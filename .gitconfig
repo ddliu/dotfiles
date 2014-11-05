@@ -166,3 +166,6 @@
 [svn]
     # push empty directory removals back to svn as directory deletes
     rmdir = true
+[user]
+	email = ddliuhb@gmail.com
+	name = dong
