@@ -142,3 +142,6 @@ alias reload="exec $SHELL -l"
 
 # Faster npm for Europeans
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
+
+# Setup proxy with ssh
+alias sp="ssh -CfNg -D 127.0.0.1:9999" 
