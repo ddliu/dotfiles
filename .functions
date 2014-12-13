@@ -244,3 +244,19 @@ function o() {
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+
+# start socks proxy service from SSH
+# usage: sp 9999 user@host
+function sp() {
+	ssh -CfNg -D 127.0.0.1:$1 $2
+	echo "proxy started: 127.0.0.1:$1"
+	while nc -w 1 127.0.0.1 $1
+	do
+		sleep 10
+	done
+
+	echo "disconnected, reconnect after 3 seconds..."
+	sleep 3
+
+	sp $1 $2
+}
