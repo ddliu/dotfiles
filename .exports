@@ -23,3 +23,7 @@ export GREP_OPTIONS="--color=auto";
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications";
+
+# gopath
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
