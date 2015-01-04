@@ -1,3 +1,3 @@
 #!/bin/bash
 
-VBoxManage controlvm ubuntu poweroff
+VBoxManage controlvm ubuntu-desktop poweroff

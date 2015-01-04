@@ -1,3 +1,3 @@
 #!/bin/bash -e
 
-VBoxManage startvm ubuntu --type headless
+VBoxManage startvm ubuntu-desktop --type headless
