@@ -144,4 +144,10 @@ alias reload="exec $SHELL -l"
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
 
 # proxychain
-alias pc="proxychains"
+if hash proxychains4 2>/dev/null; then
+    alias pc="proxychains4"
+fi
+
+if hash proxychains 2>/dev/null; then
+    alias pc="proxychains"
+fi
