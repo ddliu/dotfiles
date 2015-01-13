@@ -145,3 +145,7 @@ command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.e
 
 # proxychain
 alias pc="proxychains"
+
+# shadowsocks local(sslocal)
+# ss -d start|stop|restart
+alias ss="sslocal -c $HOME/.shadowsocks.json"
