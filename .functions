@@ -260,3 +260,10 @@ function sp() {
 
 	sp $1 $2
 }
+
+# 'ssh' into a docker container created by fig
+function figin() {
+    prj=$(basename `pwd`)
+    name=$1
+    docker exec -it $prj"_"$name"_1" /bin/bash
+}
