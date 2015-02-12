@@ -265,5 +265,9 @@ function sp() {
 function figin() {
     prj=$(basename `pwd`)
     name=$1
-    docker exec -it $prj"_"$name"_1" /bin/bash
+    if [ -z "$1" ]; then
+        echo "usage: figin name";
+    else
+        docker exec -it $prj"_"$name"_1" /bin/bash;
+    fi
 }
