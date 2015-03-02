@@ -27,3 +27,6 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications";
 # gopath
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+＃ composer
+export PATH=$PATH:$HOME/.composer/vendor/bin
