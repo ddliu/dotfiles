@@ -6,7 +6,67 @@ GIT_AUTHOR_EMAIL="ddliuhb@gmail.com"
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 
+function has_command() {
+    hash $1 2>/dev/null
+}
+
+# open
+function o() {
+    if has_command xdg-open; then
+        cmd=xdg-open;
+    else
+        cmd=open;
+    fi;
+
+    echo $cmd;
+    if [ $# -eq 0 ]; then
+        $cmd .;
+    else
+        $cmd "$@";
+    fi;
+}
+
 # svn_touch: touch modified or new files (to notify watchers)
 function svn_touch() {
     svn st "$@" | awk {'print $2'} | xargs touch
 }
+
+# start socks proxy service from SSH
+# usage: sp 9999 user@host
+function sp() {
+    ssh -CfNg -D 127.0.0.1:$1 $2
+    echo "proxy started: 127.0.0.1:$1"
+    while nc -w 1 127.0.0.1 $1
+    do
+        sleep 10
+    done
+
+    echo "disconnected, reconnect after 3 seconds..."
+    sleep 3
+
+    sp $1 $2
+}
+
+# 'ssh' into a docker container created by fig
+function figin() {
+    prj=$(basename `pwd`)
+    name=$1
+    if [ -z "$1" ]; then
+        echo "usage: figin name";
+    else
+        docker exec -it $prj"_"$name"_1" /bin/bash;
+    fi
+}
+
+# proxychain
+if has_command proxychains4; then
+    alias pc="proxychains4"
+fi
+
+if has_command proxychains; then
+    alias pc="proxychains"
+fi
+
+# shadowsocks local(sslocal)
+# ss -d start|stop|restart
+alias ss="sslocal -c $HOME/.shadowsocks.json"

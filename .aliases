@@ -142,16 +142,3 @@ alias reload="exec $SHELL -l"
 
 # Faster npm for Europeans
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
-
-# proxychain
-if hash proxychains4 2>/dev/null; then
-    alias pc="proxychains4"
-fi
-
-if hash proxychains 2>/dev/null; then
-    alias pc="proxychains"
-fi
-
-# shadowsocks local(sslocal)
-# ss -d start|stop|restart
-alias ss="sslocal -c $HOME/.shadowsocks.json"
