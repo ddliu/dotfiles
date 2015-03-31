@@ -18,11 +18,10 @@ function o() {
         cmd=open;
     fi;
 
-    echo $cmd;
     if [ $# -eq 0 ]; then
         $cmd .;
     else
-        $cmd "$@";
+        $cmd "$@" &> /dev/null;
     fi;
 }
 
