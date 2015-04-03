@@ -1,3 +1,10 @@
+# PATH
+export PATH=~/npm/bin:$PATH
+
+# Node
+mkdir -p ~/npm
+export NODE_PATH=~/npm/lib/node_modules
+
 # Git credentials
 GIT_AUTHOR_NAME="dong"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
